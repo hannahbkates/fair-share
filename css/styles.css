@@ -1,0 +1,19 @@
+#mapContainer {
+  height: 800px;
+  width: 100%;
+  display: inline-block;
+}
+
+#sidebar {
+  display: inline-block;
+  position: absolute;
+  padding: 15px;
+  background: #cdcdcd;
+  height: 800px;
+  overflow: auto;
+}
+
+.row.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
