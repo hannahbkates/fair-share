@@ -1,3 +1,5 @@
-# custom_nypd_precinct_facilities
+## Site Selection and Fair Share Mapping Tool
 
-To run server locally: `python -m SimpleHTTPServer 8000`
+Work in progress: https://hannahkates.github.io/fair-share/
+
+To run server locally: `python -m http.server 8000`
