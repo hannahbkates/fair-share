@@ -127,7 +127,8 @@ var createLayers = function(siteLat, siteLong) {
       },
       onEachFeature: function(feature, layer) {
         var d = feature.properties;   
-        var popupText = 'Name: <b>' + d.facname + '</b><br />' 
+        var popupText = 'Label: ' + d.label + '<br />'
+          + 'Name: <b>' + d.facname + '</b><br />' 
           + 'Category: ' + d.facsubgrp + '<br />' 
           + 'Address: ' + d.address;
         layer.bindPopup(popupText);
