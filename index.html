@@ -23,17 +23,24 @@
     <input id="agency" type="text" value="Agency or Entity">
     <input id="addressnum" type="text" value="Address Number">
     <input id="streetname" type="text" value="Street Name">
-    <input id="borough" type="text" value="Borough">
+    <select id="borough" name="Borough">
+      <option>- Borough -</option>
+      <option value="Manhattan">Manhattan</option>
+      <option value="Bronx">Bronx</option>
+      <option value="Brooklyn">Brooklyn</option>
+      <option value="Queens">Queens</option>
+      <option value="Staten Island">Staten Island</option>
+    </select>
     <input id="facsubgrp" type="text" value="Type of Facility">
     <input id="button" type="submit" value="Generate Report">
   </form>
   <div class="container-fluid">
     <div class="row no-gutter">
-      <div class="col-sm-4">
+      <div class="col-sm-5">
         <div id="mapContainer">
         </div>
       </div>  
-      <div class="col-sm-8"> 
+      <div class="col-sm-7"> 
         <div id="sidebar">
           <h2>Facilities List</h2>
           <button type="button" class="btn-download"></button>
@@ -41,10 +48,10 @@
             <thead>
               <tr>
                 <th width="5%">Label</th>
-                <th width="25%">Facility Name</th>
+                <th width="30%">Facility Name</th>
                 <th width="25%">Category</th>
                 <th width="25%">Address</th>
-                <th width="20%">Link to More Details</th>
+                <th width="15%">Link to More Details</th>
               </tr>
             </thead>
             <tbody class="table-body">
