@@ -199,22 +199,7 @@ $.getJSON(facURL, function(facPoints) {
   }).addTo(map);
 });
 
-// // Creating csv download URL
-// var facsubset_download = '<a href=\"https://cartoprod.capitalplanning.nyc/user/cpp/api/v2/sql?q=SELECT f.uid, f.facname, f.facdomain, f.facgroup, f.facsubgrp, f.address, n.precinct FROM facdb_facilities AS f, support_admin_nypdprecincts AS n WHERE ST_Intersects(f.the_geom, n.the_geom) AND n.precinct = ' + precinct + ' AND (facsubgrp = \'Solid Waste Transfer and Carting\' OR facsubgrp = \'Camps\' OR facsubgrp = \'Child Care\' OR facsubgrp = \'DOE Universal Pre-Kindergarten\' OR facsubgrp = \'Dual Child Care and Universal Pre-K\' OR facsubgrp = \'Preschools for Students with Disabilities\' OR facsubgrp = \'Foster Care Services and Residential Care\' OR facsubgrp = \'Public Schools\' OR facsubgrp = \'Comprehensive After School System (COMPASS) Sites\' OR facsubgrp = \'Youth Centers, Literacy Programs, Job Training, and Immigrant Services\' OR facsubgrp = \'Chemical Dependency\' OR facsubgrp = \'Hospitals and Clinics\' OR facsubgrp = \'Mental Health\' OR facsubgrp = \'Residential Health Care\' OR facsubgrp = \'Community Centers and Community School Programs\' OR facsubgrp = \'Financial Assistance and Social Services\' OR facsubgrp = \'Legal and Intervention Services\' OR facsubgrp = \'Non-residential Housing and Homeless Services\' OR facsubgrp = \'Programs for People with Disabilities\' OR facsubgrp = \'Senior Services\' OR facsubgrp = \'Soup Kitchens and Food Pantries\' OR facsubgrp = \'Workforce Development\' OR facsubgrp = \'Public Libraries\' OR facsubgrp = \'School-Based Safety Program\')&format=csv&filename=customfacilities_precinct' + precinct + '\">Download</a>';
+// Creating csv download URL
+var facsubset_download = '<a href=\"https://cartoprod.capitalplanning.nyc/user/cpp/api/v2/sql?q=WITH site AS (SELECT ST_Transform(ST_SetSRID(ST_MakePoint(' + siteLong + ', ' + siteLat + '),4326), 3857) AS the_geom_webmercator), buffer AS ( SELECT ST_Buffer(the_geom_webmercator, 804.672) AS the_geom_webmercator, ST_Transform(ST_Buffer(the_geom_webmercator, 804.672), 4326) AS the_geom FROM site) SELECT row_number() over (ORDER BY ST_Distance(f.the_geom_webmercator, site.the_geom_webmercator)) AS label, f.* FROM facdb_facilities AS f, site, buffer WHERE ST_Intersects(f.the_geom_webmercator, buffer.the_geom_webmercator) ORDER BY label ASC&format=csv&filename=FairShareList\">Download</a>';
 
-// $('.btn-download').append(facsubset_download);
-
-
-
-// // Getting NYPD Precinct number entered in URL
-// var precinct = '';
-
-// if (window.location.hash) {
-//   var precinct = window.location.hash.split('precinct=')[1];
-// } else {
-//   console.error('Precinct ID is missing in URL hash');
-// }
-
-// console.log(precinct);
-// $('.header-main').append("Fair Share Site Selection Report for");
-// // + addressnum + ' ' + streetname + ', ' + borough
+$('.btn-download').append(facsubset_download);
