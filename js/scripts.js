@@ -107,17 +107,24 @@ var createLayers = function(siteLat, siteLong) {
     facsubset = L.geoJson(facPoints, {
       // Display points
       pointToLayer: function (feature, latlng) {
-          var geojsonMarkerOptions = {
-              radius: 5,
-              fillColor: getColor(feature.properties.facdomain),
-              color: "#000",
-              weight: 1,
-              opacity: 1,
-              fillOpacity: 0.9
-          };
-          return L.circleMarker(latlng, geojsonMarkerOptions);
+        var d = feature.properties; 
+        var geojsonMarkerOptions = {
+            radius: 5,
+            fillColor: getColor(d.facdomain),
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.9
+        };
+        var label = d.label;
+        return L.circleMarker(latlng, geojsonMarkerOptions)
       },
-      // Create popup content
+      // Create label and popup content
+      onEachFeature: function(feature, layer) {
+        var d = feature.properties;   
+        var label = d.label + '';
+        layer.bindTooltip(label, {permanent: true});
+      },
       onEachFeature: function(feature, layer) {
         var d = feature.properties;   
         var popupText = 'Name: <b>' + d.facname + '</b><br />' 
