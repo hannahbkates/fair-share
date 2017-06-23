@@ -18,7 +18,9 @@
 </head>
 
 <body>
-  <h1 class="header-main"></h1>
+  <h1 class="header-main" style="text-align:center">Site Selection and Fair Share Analysis Tool</h1>
+  <h5 style="text-align:center"><a href="https://www1.nyc.gov/assets/planning/download/pdf/applicants/applicant-portal/fair_share_analysis_description.pdf">What is the Fair Share criteria?</a></h5>
+  <h4>Enter the address of your proposed site location:</h4>
   <form>
     <input id="addressnum" type="text" placeholder="Address Number">
     <input id="streetname" type="text" placeholder="Street Name">
@@ -30,18 +32,18 @@
       <option value="Queens">Queens</option>
       <option value="Staten Island">Staten Island</option>
     </select>
-    <input id="button" type="submit" value="Generate Report">
+    <input id="submit-button" type="submit" value="Generate Report">
   </form>
   <div class="container-fluid">
     <div class="row no-gutter">
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <div id="mapContainer">
         </div>
       </div>  
-      <div class="col-sm-7"> 
+      <div class="col-sm-6"> 
         <div id="sidebar">
-          <h2>Facilities List</h2>
-          <button type="button" class="btn-download"></button>
+          <h4>Facilities within 1/2 mile of proposed site</h4>
+          <button type="button" id="btn-download"></button>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -49,7 +51,7 @@
                 <th width="30%">Facility Name</th>
                 <th width="25%">Category</th>
                 <th width="25%">Address</th>
-                <th width="15%">Link to More Details</th>
+                <th width="15%">Link to Details</th>
               </tr>
             </thead>
             <tbody class="table-body">

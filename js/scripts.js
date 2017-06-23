@@ -28,7 +28,7 @@ var siteLong;
 var valid;
 
 // Getting form input values
-$('#button').on('click', function(event) {
+$('#submit-button').on('click', function(event) {
   valid = true;
   event.preventDefault();
   for(i=0; i<inputs.length; i++) {
@@ -138,5 +138,5 @@ var createLayers = function(siteLat, siteLong) {
 }
 
 // Creating csv download URL
-var facsubset_download = '<a href=\"https://cartoprod.capitalplanning.nyc/user/cpp/api/v2/sql?q=WITH site AS (SELECT ST_Transform(ST_SetSRID(ST_MakePoint(' + siteLong + ', ' + siteLat + '),4326), 3857) AS the_geom_webmercator), buffer AS ( SELECT ST_Buffer(the_geom_webmercator, 804.672) AS the_geom_webmercator, ST_Transform(ST_Buffer(the_geom_webmercator, 804.672), 4326) AS the_geom FROM site) SELECT row_number() over (ORDER BY ST_Distance(f.the_geom_webmercator, site.the_geom_webmercator)) AS label, f.* FROM facdb_facilities AS f, site, buffer WHERE ST_Intersects(f.the_geom_webmercator, buffer.the_geom_webmercator) ORDER BY label ASC&format=csv&filename=FairShareList\">Download</a>';
-$('.btn-download').append(facsubset_download);
+var facsubset_download = '<a href=\"https://cartoprod.capitalplanning.nyc/user/cpp/api/v2/sql?q=WITH site AS (SELECT ST_Transform(ST_SetSRID(ST_MakePoint(' + siteLong + ', ' + siteLat + '),4326), 3857) AS the_geom_webmercator), buffer AS ( SELECT ST_Buffer(the_geom_webmercator, 804.672) AS the_geom_webmercator, ST_Transform(ST_Buffer(the_geom_webmercator, 804.672), 4326) AS the_geom FROM site) SELECT row_number() over (ORDER BY ST_Distance(f.the_geom_webmercator, site.the_geom_webmercator)) AS label, f.* FROM facdb_facilities AS f, site, buffer WHERE ST_Intersects(f.the_geom_webmercator, buffer.the_geom_webmercator) ORDER BY label ASC&format=csv&filename=FairShareList\"><span id="download-icon" class="glyphicon glyphicon-download-alt"></span></a>';
+$('#btn-download').append(facsubset_download);
