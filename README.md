@@ -1,5 +1,3 @@
 ## Site Selection and Fair Share Mapping Tool
 
-Work in progress: https://hannahkates.github.io/fair-share/
-
-To run server locally: `python -m http.server 8000`
+Please note this test project is a work in progress and is not an official NYC Planning product: https://hannahkates.github.io/fair-share/
