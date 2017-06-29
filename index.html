@@ -18,22 +18,23 @@
 </head>
 
 <body>
-  <h1 class="header-main" style="text-align:center">Site Selection and Fair Share Analysis Tool</h1>
-  <h5 style="text-align:center"><a target="_blank" href="https://www1.nyc.gov/assets/planning/download/pdf/applicants/applicant-portal/fair_share_analysis_description.pdf">What is the Fair Share criteria?</a></h5>
-  <h4>Enter the address of your proposed site location:</h4>
-  <form>
-    <input id="addressnum" type="text" placeholder="Address Number">
-    <input id="streetname" type="text" placeholder="Street Name">
-    <select id="borough" name="Borough">
-      <option>- Borough -</option>
-      <option value="Manhattan">Manhattan</option>
-      <option value="Bronx">Bronx</option>
-      <option value="Brooklyn">Brooklyn</option>
-      <option value="Queens">Queens</option>
-      <option value="Staten Island">Staten Island</option>
-    </select>
-    <input id="submit-button" type="submit" value="Generate Report">
-  </form>
+  <div id="top-section" class="container">
+    <h1 class="header-main" style="text-align:center">Site Selection and Fair Share Analysis Tool</h1>
+    <h4 style="text-align:center"><a target="_blank" href="https://www1.nyc.gov/assets/planning/download/pdf/applicants/applicant-portal/fair_share_analysis_description.pdf">What is the Fair Share criteria?</a></h5>
+    <div class="row">
+      <div class="col">
+        <h4>Enter the address of your proposed site location:</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="enter-address col-sm-3">
+        <input id="addressnum" type="text" class="form-control" placeholder="Address and Borough">
+        <button id="submit-button" type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-arrow-right"></span>
+        </button>
+      </div>
+    </div>
+  </div>
   <div class="container-fluid">
     <div class="row no-gutter">
       <div class="col-sm-6">
@@ -42,7 +43,7 @@
       </div>  
       <div class="col-sm-6"> 
         <div id="sidebar">
-          <h4>Facilities within 1/2 mile of proposed site <button type="button" id="btn-download"></button></h4>
+          <h4>Facilities within 1/2 mile of proposed site <button id="btn-download" type="button" class="btn btn-default"></button></h4>
           <table class="table table-striped">
             <thead>
               <tr>

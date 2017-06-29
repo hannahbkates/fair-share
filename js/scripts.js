@@ -1,6 +1,8 @@
-var gAPI = 'AIzaSyC6SuU3stxfZpRVoxa5kwVH21C0gKeBJA4';
-
 // Instantiating the map object
+var h = window.innerHeight - 185;
+console.log(h);
+$('#mapContainer').css('height',h);
+$('#sidebar').css('height',h);
 var map = L.map('mapContainer').setView([40.735021, -73.994787], 11);
 
 // Adding a light basemap from carto's free basemaps
@@ -43,8 +45,8 @@ $('#submit-button').on('click', function(event) {
     }
   }
   if (valid == true) {
-    var geoURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + inputs[1] + '+' + inputs[2] + '+' + inputs[3] + '+NY&key=' + gAPI;
-    // var geoURL = 'https://api.cityofnewyork.us/geoclient/v1/address.json?houseNumber=' + inputs[1] +'&street=' + inputs[2] + '&borough=' + inputs[3] + '&app_id=' + app_id + '&app_key=' + app_key;
+    var geoURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + inputs[1] + '+NY';
+     // + '+' + inputs[2] + '+' + inputs[3] + '+NY';
     var geoOutput = $.getJSON(geoURL, function(data) {      
       siteLat = data.results["0"].geometry.location.lat;
       siteLong = data.results["0"].geometry.location.lng;
