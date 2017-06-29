@@ -1,6 +1,5 @@
-// Instantiating the map object
+// Instantiating the map object and setting the height based on window height
 var h = window.innerHeight - 185;
-console.log(h);
 $('#mapContainer').css('height',h);
 $('#sidebar').css('height',h);
 var map = L.map('mapContainer').setView([40.735021, -73.994787], 11);
@@ -22,31 +21,18 @@ function getColor(facdomain) {
   facdomain == 'Administration of Government' ? '#CBCBD6' : '#FFF'
 };
 
-var inputIDs = ['agency', 'addressnum', 'streetname', 'borough', 'facsubgrp'];
-var inputOrig = ['Agency or Entity', 'Address Number', 'Street Name', 'Borough', 'Type of Facility'];
-var inputs = [$('#agency').val(), $('#addressnum').val(), $('#streetname').val(), $('#borough').val(), $('#facsubgrp').val()];
 var siteLat;
 var siteLong;
 var valid;
 
 // Getting form input values
 $('#submit-button').on('click', function(event) {
+  $('.table-body').empty();
+  var inputAddress = $('#addressnum').val();
   valid = true;
   event.preventDefault();
-  for(i=0; i<inputs.length; i++) {
-    var value = '#' + inputIDs[i];
-    // If value is different from orig value, update value
-    if($(value).val() != inputOrig[i]) {
-      inputs[i] = $(value).val();
-    } else {
-      // If value is same as original value, turn input box red
-      $(value).css('background', '#FFCCCC');
-      valid = false;
-    }
-  }
   if (valid == true) {
-    var geoURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + inputs[1] + '+NY';
-     // + '+' + inputs[2] + '+' + inputs[3] + '+NY';
+    var geoURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + inputAddress + ' New York City';
     var geoOutput = $.getJSON(geoURL, function(data) {      
       siteLat = data.results["0"].geometry.location.lat;
       siteLong = data.results["0"].geometry.location.lng;
