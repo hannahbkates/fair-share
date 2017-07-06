@@ -132,6 +132,6 @@ var createLayers = function(siteLat, siteLong) {
 
   // Creating csv download URL
   var facDownload = '<a target="_blank" href=\"https://cartoprod.capitalplanning.nyc/user/cpp/api/v2/sql?q=' + facQuery + '&format=csv&filename=FairShareList\"><span id="download-icon" class="glyphicon glyphicon-download-alt"></span></a>';
-  $('#btn-download').append(facDownload);
-
+  button = '<button id="btn-download" type="button" class="btn btn-default">' + facDownload + '</button>';
+  $('#table-header').append(button);
 }
