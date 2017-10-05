@@ -28,7 +28,7 @@ var valid;
 var innerRadius = 121.92;
 var outerRadius = 804.672;
 
-var cartoURL = 'https://cartoprod.capitalplanning.nyc/user/cpp/api/v2/sql?q=';
+var cartoURL = 'https://carto.planninglabs.nyc/user/data/api/v2/sql?q=';
 
 // Getting form input values
 $('#submit-button').on('click', function(event) {
@@ -83,7 +83,7 @@ var createLayers = function(siteLat, siteLong) {
   });
 
   // Getting and adding the filtered FACILITIES to the map
-  var facQuery = 'WITH site AS (SELECT ST_Transform(ST_SetSRID(ST_MakePoint(' + siteLong + ', ' + siteLat + '),4326), 3857) AS the_geom_webmercator), buffer AS ( SELECT ST_Buffer(the_geom_webmercator, ' + outerRadius + ') AS the_geom_webmercator, ST_Transform(ST_Buffer(the_geom_webmercator, ' + outerRadius + '), 4326) AS the_geom FROM site) SELECT row_number() over (ORDER BY ST_Distance(f.the_geom_webmercator, site.the_geom_webmercator)) AS label, f.* FROM facdb_facilities AS f, site, buffer WHERE ST_Intersects(f.the_geom_webmercator, buffer.the_geom_webmercator) ORDER BY label ASC';
+  var facQuery = 'WITH site AS (SELECT ST_Transform(ST_SetSRID(ST_MakePoint(' + siteLong + ', ' + siteLat + '),4326), 3857) AS the_geom_webmercator), buffer AS ( SELECT ST_Buffer(the_geom_webmercator, ' + outerRadius + ') AS the_geom_webmercator, ST_Transform(ST_Buffer(the_geom_webmercator, ' + outerRadius + '), 4326) AS the_geom FROM site) SELECT row_number() over (ORDER BY ST_Distance(f.the_geom_webmercator, site.the_geom_webmercator)) AS label, f.* FROM facdb_170522 AS f, site, buffer WHERE ST_Intersects(f.the_geom_webmercator, buffer.the_geom_webmercator) ORDER BY label ASC';
   var facURL = cartoURL + facQuery + '&format=geojson&filename=download';
   var facPoints;
   $.getJSON(facURL, function(facPoints) {
