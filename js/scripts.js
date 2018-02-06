@@ -28,7 +28,7 @@ var valid;
 var innerRadius = 121.92;
 var outerRadius = 804.672;
 
-var cartoURL = 'https://carto.planninglabs.nyc/user/data/api/v2/sql?q=';
+var cartoURL = 'https://planninglabs.carto.com/api/v2/sql?q=';
 
 // Getting form input values
 $('#submit-button').on('click', function(event) {
