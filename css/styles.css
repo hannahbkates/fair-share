@@ -1,33 +1,33 @@
-h1 {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-size: 40px;
-    margin-left: 25px
+.row.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
 }
 
-h2 {
-    font-size: 30px;
+.enter-address {
+  display: flex;
 }
 
-p {
-    font-size: 14px;
+.enter-address input {
+  margin-right: .5em;
 }
 
-.bar{
-  fill: steelblue;
+#top-section {
+  height: 180px;
 }
 
-.bar:hover{
-  fill: navy;
+#mapContainer {
+  height: 800px;
+  width: 100%;
+  display: inline-block;
+  margin-right: 8px;
 }
 
-.axis {
-  font: 14px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+#sidebar {
+  display: inline-block;
+  position: absolute;
+  padding: 15px;
+  background: #CDD2D4;
+  height: 800px;
+  overflow: auto;
+  margin-left: 8px;
 }
